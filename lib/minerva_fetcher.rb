@@ -2,6 +2,9 @@ require 'active_support/all'
 
 require 'minerva-fetcher/query'
 require 'minerva-fetcher/request'
+
+Dir["#{File.dirname(__FILE__)}/minerva-fetcher/strategies/*.rb"].map(&method(:require))
+
 module Minerva
   module Fetcher
 
