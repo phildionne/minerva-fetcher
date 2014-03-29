@@ -17,4 +17,6 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.rubyforge_project = '[none]'
   s.add_dependency 'activesupport'
+  s.add_dependency 'faraday'
+  s.add_dependency 'faraday_middleware'
 end
