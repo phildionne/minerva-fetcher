@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.rubyforge_project = '[none]'
   s.add_dependency 'activesupport'
   s.add_dependency 'faraday'
-  s.add_dependency 'faraday_middleware'
+  s.add_dependency 'faraday_middleware', '~>0.9.0'
   s.add_dependency 'multi_xml'
 end
