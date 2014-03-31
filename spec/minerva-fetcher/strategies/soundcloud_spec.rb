@@ -29,7 +29,7 @@ describe Minerva::Fetcher::Strategies::Soundcloud do
 
     before { request.fetch }
 
-    describe :InstanceMethods do
+    describe :InstanceMethods, :vcr do
 
       describe :title do
         it { expect(result.title).to be_a(String) }
@@ -60,7 +60,7 @@ describe Minerva::Fetcher::Strategies::Soundcloud do
       pending
     end
 
-    describe :fetch do
+    describe :fetch, :vcr do
       it { expect(strategy.fetch(query)).to be_a(Array) }
       it { expect(strategy.fetch(query).first).to be_a(Minerva::Fetcher::Strategies::Soundcloud::Result) }
 

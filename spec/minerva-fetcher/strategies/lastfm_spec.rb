@@ -29,7 +29,7 @@ describe Minerva::Fetcher::Strategies::Lastfm do
 
     before { request.fetch }
 
-    describe :InstanceMethods do
+    describe :InstanceMethods, :vcr do
 
       describe :title do
         it { expect(result.title).to be_a(String) }
@@ -56,7 +56,7 @@ describe Minerva::Fetcher::Strategies::Lastfm do
       pending
     end
 
-    describe :fetch do
+    describe :fetch, :vcr do
 
       describe "without api_key" do
         before { strategy.config.api_key = nil }
