@@ -20,6 +20,8 @@ test/version_tmp
 tmp
 .env
 
+spec/support/cassettes
+
 # YARD artifacts
 .yardoc
 _yardoc
