@@ -73,7 +73,7 @@ describe Minerva::Fetcher::Strategies::Lastfm do
       end
 
       describe "without a title attribute" do
-        let(:query) { Minerva::Fetcher::Query.new }
+        let(:query) { Minerva::Fetcher::Query.new(title: nil) }
         it { expect { strategy.fetch(query) }.to raise_error(ArgumentError) }
       end
 
