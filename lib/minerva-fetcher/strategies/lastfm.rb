@@ -51,7 +51,7 @@ module Minerva
         # @param options [Hash]
         def initialize(options = {})
           options = {
-            api_key: "",
+            api_key: nil,
             api_endpoint: "http://ws.audioscrobbler.com"
           }.merge(options)
 
