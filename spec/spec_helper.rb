@@ -6,6 +6,7 @@ Dotenv.load
 
 require 'bundler/setup'
 require 'rspec'
+require 'vcr'
 
 require 'minerva_fetcher'
 
@@ -16,4 +17,10 @@ RSpec.configure do |config|
   config.filter_run focus: true
   config.filter_run_excluding skip: true
   config.run_all_when_everything_filtered = true
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/support/cassettes'
+  c.hook_into :faraday
+  c.configure_rspec_metadata!
 end
