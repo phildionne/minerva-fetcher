@@ -101,7 +101,10 @@ module Minerva
           }.merge(options)
 
           Faraday.new(options) do |faraday|
-            faraday.use FaradayMiddleware::ParseJson, content_type: /\bjson$/
+            faraday.request :json
+
+            faraday.response :json, content_type: /\bjson$/
+
             faraday.use Faraday::Response::RaiseError
             faraday.adapter Faraday.default_adapter
           end
