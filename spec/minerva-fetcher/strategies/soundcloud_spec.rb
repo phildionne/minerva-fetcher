@@ -64,6 +64,11 @@ describe Minerva::Fetcher::Strategies::Soundcloud do
       it { expect(strategy.fetch(query)).to be_a(Array) }
       it { expect(strategy.fetch(query).first).to be_a(Minerva::Fetcher::Strategies::Soundcloud::Result) }
 
+      describe "without a title attribute" do
+        let(:query) { Minerva::Fetcher::Query.new }
+        it { expect { strategy.fetch(query) }.to raise_error(ArgumentError) }
+      end
+
       describe "without api_key" do
         before { strategy.config.api_key = nil }
         it { expect { strategy.fetch(query) }.to raise_error(ArgumentError) }

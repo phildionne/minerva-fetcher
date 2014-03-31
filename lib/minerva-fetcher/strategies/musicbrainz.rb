@@ -53,6 +53,8 @@ module Minerva
         # @param query [Query]
         # @return [Array] A collection of Result objects
         def fetch(query)
+          raise ArgumentError unless query.attributes[:title].present?
+
           params = {
             title: query.attributes[:title],
             artist: query.attributes[:artist]

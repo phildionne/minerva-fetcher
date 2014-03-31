@@ -57,6 +57,11 @@ describe Minerva::Fetcher::Strategies::Musicbrainz do
     describe :fetch, :vcr do
       it { expect(strategy.fetch(query)).to be_a(Array) }
       it { expect(strategy.fetch(query).first).to be_a(Minerva::Fetcher::Strategies::Musicbrainz::Result) }
+
+      describe "without a title attribute" do
+        let(:query) { Minerva::Fetcher::Query.new }
+        it { expect { strategy.fetch(query) }.to raise_error(ArgumentError) }
+      end
     end
 
     describe :client do

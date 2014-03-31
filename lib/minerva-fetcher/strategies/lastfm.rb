@@ -66,6 +66,7 @@ module Minerva
         # @return [Array] A collection of Result objects
         def fetch(query)
           raise ArgumentError, "Please configure 'config.api_key' first" unless config.api_key.present?
+          raise ArgumentError unless query.attributes[:title].present?
 
           case
           when query.attributes[:title] && query.attributes[:artist]

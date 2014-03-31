@@ -58,11 +58,6 @@ describe Minerva::Fetcher::Strategies::Lastfm do
 
     describe :fetch, :vcr do
 
-      describe "without api_key" do
-        before { strategy.config.api_key = nil }
-        it { expect { strategy.fetch({}) }.to raise_error(ArgumentError) }
-      end
-
       context "with a title and an artist attribute" do
         let(:query) { Minerva::Fetcher::Query.new(title: "Mesmerise", artist: "Temples") }
 
@@ -75,6 +70,16 @@ describe Minerva::Fetcher::Strategies::Lastfm do
 
         it { expect(strategy.fetch(query)).to be_a(Array) }
         it { expect(strategy.fetch(query).first).to be_a(Minerva::Fetcher::Strategies::Lastfm::Result) }
+      end
+
+      describe "without a title attribute" do
+        let(:query) { Minerva::Fetcher::Query.new }
+        it { expect { strategy.fetch(query) }.to raise_error(ArgumentError) }
+      end
+
+      describe "without api_key" do
+        before { strategy.config.api_key = nil }
+        it { expect { strategy.fetch({}) }.to raise_error(ArgumentError) }
       end
     end
 
