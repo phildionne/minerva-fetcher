@@ -9,6 +9,7 @@ group :test do
   gem 'dotenv'
   gem 'coveralls', require: false
   gem 'rspec', '>= 2.14'
+  gem 'vcr'
 end
 
 gemspec
